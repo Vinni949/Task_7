@@ -1,0 +1,16 @@
+C:\Users\pumba\source\repos\Exempels7\Exempels7\obj\Debug\net5.0\Exempels7.csproj.AssemblyReference.cache
+C:\Users\pumba\source\repos\Exempels7\Exempels7\obj\Debug\net5.0\Exempels7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pumba\source\repos\Exempels7\Exempels7\obj\Debug\net5.0\Exempels7.AssemblyInfoInputs.cache
+C:\Users\pumba\source\repos\Exempels7\Exempels7\obj\Debug\net5.0\Exempels7.AssemblyInfo.cs
+C:\Users\pumba\source\repos\Exempels7\Exempels7\obj\Debug\net5.0\Exempels7.csproj.CoreCompileInputs.cache
+C:\Users\pumba\source\repos\Exempels7\Exempels7\bin\Debug\net5.0\Exempels7.exe
+C:\Users\pumba\source\repos\Exempels7\Exempels7\bin\Debug\net5.0\Exempels7.deps.json
+C:\Users\pumba\source\repos\Exempels7\Exempels7\bin\Debug\net5.0\Exempels7.runtimeconfig.json
+C:\Users\pumba\source\repos\Exempels7\Exempels7\bin\Debug\net5.0\Exempels7.runtimeconfig.dev.json
+C:\Users\pumba\source\repos\Exempels7\Exempels7\bin\Debug\net5.0\Exempels7.dll
+C:\Users\pumba\source\repos\Exempels7\Exempels7\bin\Debug\net5.0\ref\Exempels7.dll
+C:\Users\pumba\source\repos\Exempels7\Exempels7\bin\Debug\net5.0\Exempels7.pdb
+C:\Users\pumba\source\repos\Exempels7\Exempels7\obj\Debug\net5.0\Exempels7.dll
+C:\Users\pumba\source\repos\Exempels7\Exempels7\obj\Debug\net5.0\ref\Exempels7.dll
+C:\Users\pumba\source\repos\Exempels7\Exempels7\obj\Debug\net5.0\Exempels7.pdb
+C:\Users\pumba\source\repos\Exempels7\Exempels7\obj\Debug\net5.0\Exempels7.genruntimeconfig.cache
