@@ -1,43 +1,47 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace work7
 
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            string writePath = @"C:\Users\pumba\source\repos\Exempels7\Class.txt";
-
-            int number = 1;
-            string Name = Console.ReadLine(); 
-            string FirstName = Console.ReadLine();
-            string Task = Console.ReadLine();
-            string data = DateTime.Now.ToString();
-            TaskBook book = new TaskBook(number,Name,FirstName,Task,data);
-            Console.WriteLine(DateTime.Now);
-            book.Print();
-            try
+            TaskManegment task = new TaskManegment();
+            bool choice = true;
+            while (choice)
             {
-                using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
+                Console.WriteLine();
+                Console.WriteLine("Введите номер: \n1-Печатать все записи, \n2-Добавить новую запись, \n3-Редактировать запись, \n4-Удалить запись, \n5-Упорядочить записи,\n0 - exit");
+                switch (Console.ReadKey().Key)
                 {
-                    await sw.WriteLineAsync("");
-                    await sw.WriteAsync(book.GetNumber.ToString());
-                    await sw.WriteAsync("| " + book.GetName);
-                    await sw.WriteAsync("| " + book.GetFirstName);
-                    await sw.WriteAsync("| " + book.GetTask);
-                    await sw.WriteAsync("| " + book.GetDate);
-                    await sw.WriteAsync("|");
+                    case ConsoleKey.D1:
+                        task.Print();
+                        break;
+                    case ConsoleKey.D2:
+                        task.AddTaskManegment();
+                        break;
+                    case ConsoleKey.D3:
+                        task.AddTask();
+                        break;
+                    case ConsoleKey.D4:
+                        task.DeletedMenu();
+                        break;
+                    case ConsoleKey.D5:
+                        task.SortMenu();
+                        break;
+                    case ConsoleKey.D0:
+                        choice = false;
+                        break;
+                    default:
+                        Console.WriteLine("Нажата неверна клавиша, введите снова!");
+                        break;
                 }
-                Console.WriteLine("Запись выполнена");
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            Console.ReadKey();
         }
+        
     }
 }

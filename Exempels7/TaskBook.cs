@@ -8,77 +8,35 @@ namespace work7
 {
     class TaskBook
     {
-        private int Number;
-        private string Name;
-        private string FirstName;
-        private string Task;
-        private string Data;
-
-        public TaskBook(int Number, string Name, string FirstName, string Task, string data)
+        public TaskBook(int number, string name, string firstName, string task, string data)
         {
-            this.Number = Number;
-            this.Name = Name;
-            this.FirstName = FirstName;
-            this.Task = Task;
-            this.Data = data;
+            this.Number = number;
+            this.Name = name;
+            this.FirstName = firstName;
+            this.Task = task;
+            this.Date = DateTime.Parse(data);
         }
 
-        public void EditingName(string NewName)
-        {
-            Name = NewName;
-        }
-        public void EditingNewTask(string NewTask)
-        {
-            Task = NewTask;
-        }
+        public string Task
+        { get; set; }
+        
         public void AddTask(string AddTask)
         {
             Task += AddTask;
         }
-
-        public void AddTime(DateTime data)
-        {
-            Data += ", ";
-            Data += data;
-        }
         public void Print()
         {
-            Console.WriteLine(Number + "\n" + Name+"\n"+FirstName + "\n" + Task + "\n" + Data);
+            Console.WriteLine(Number + "\n" + Name+"\n"+FirstName + "\n" + Task + "\n" + Date);
         }
-        public string GetName
-        {
-            get
-            {
-                return Name;
-            }
-        }
-        public int GetNumber
-        {
-            get
-            {
-                return Number;
-            }
-        }
-        public string GetFirstName
-        {
-            get
-            {
-                return FirstName;
-            }
-        }
-        public string GetTask
-        {
-            get
-            {
-                return Task;
-            }
-        }
-        public string GetDate
-        {
-            get
-            {
-                return Data;
-            }
-        }
+        public string Name
+        { get; set; }
+        public int Number
+        { get; set; }
+
+        public string FirstName
+        { get; set; }
+
+        public DateTime Date
+        {get; set;}
     }
 }
