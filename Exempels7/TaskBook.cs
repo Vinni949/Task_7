@@ -22,7 +22,7 @@ namespace Work7
         
         public void Print(IPrinter printer)
         {
-            printer.Print(Number + "\n" + Name+"\n"+FirstName + "\n" + Task + "\n" + Date);
+            printer.Print("Запись: "+Number + "\n" + "Имя: "+Name+"\n"+"Фамилия: "+FirstName + "\n" + "Задача: "+Task + "\n" + "Дата создания: "+Date);
         }
         public string Name
         { get; set; }

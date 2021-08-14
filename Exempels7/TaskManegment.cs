@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace work7
+namespace Work7
 {
     class TaskManegment
     {
-        List<TaskBook> list = new List<TaskBook>();
-        int number = 1;
+        static List<TaskBook> list = new List<TaskBook>();
         const string writePath = @"Class.txt";
+        int number = 1;
         public TaskManegment()
         {
             if (File.Exists(writePath))
@@ -24,22 +24,15 @@ namespace work7
                 File.Create(@"Class.txt");
             }
         }
-        public TaskBook AddTaskManegment()
+        public TaskBook AddTaskManegment(string name, string firstName, string task, string date)
         {
-            Console.WriteLine("ВВеди имя:");
-            string name = Console.ReadLine();
-            Console.WriteLine("ВВеди Фамилию:");
-            string firstName = Console.ReadLine();
-            Console.WriteLine("ВВеди Задачу:");
-            string task = Console.ReadLine();
-            string date = DateTime.Now.ToString();
             TaskBook book = new TaskBook(number, name, firstName, task, date);
             list.Add(book);
-            number++;
             Save();
+            number++;
             return book;
         }
-        private void Load()
+        public void Load(DateInterval dateInterval=null)
         {
             try
             {
@@ -47,15 +40,18 @@ namespace work7
                 {
                     while (!stream.EndOfStream)
                     {
+
                         string entry = stream.ReadLine();
                         string[] data = entry.Split("|");
-                        int number = int.Parse(data[0]);
                         string name = data[1];
                         string firstName = data[2];
                         string task = data[3];
                         string date = data[4];
-                        TaskBook book = new TaskBook(number, name, firstName, task, date);
-                        list.Add(book);
+                        TaskBook book = new TaskBook(number,name, firstName, task, date);
+                        if (dateInterval == null||dateInterval.StartDate<=book.Date&&dateInterval.EndDate>= book.Date)
+                        { 
+                            list.Add(book);
+                        }
                     }
                 }
             }
@@ -70,12 +66,12 @@ namespace work7
         {
             foreach (TaskBook task in list)
             {
-                task.Print();
+                task.Print(new ConsolePrinter());
+                Console.WriteLine();
             }
-            Console.WriteLine();
         }
 
-        private void Save()
+        static void Save()
         {
             try
             {
@@ -95,80 +91,65 @@ namespace work7
             }
             Console.ReadKey();
         }
-        public void DeletedMenu()
-        {
-            bool choice = true;
-            while (choice)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Введите номер: \n1-Удаление по номеру, \n2-Удаление по имени, \n3-Удаление по фамилии, \n4-Удаление по дате, \n0 - exit");
-                switch (Console.ReadKey().Key)
-                {
-                    case ConsoleKey.D1:
-                        DeletedByNumber();
-                        break;
-                    case ConsoleKey.D2:
-                        DeletedByName();
-                        break;
-                    case ConsoleKey.D3:
-                        DeletedByFirstName();
-                            break;
-                    case ConsoleKey.D4:
-                        DeletedByDateTime();
-                        break;
-                    case ConsoleKey.D0:
-                        choice = false;
-                        break;
-                    default:
-                        Console.WriteLine("Нажата неверна клавиша, введите снова!");
-                        break;
-                }
-            }
-        }
 
-        private void DeletedByNumber()
+
+        public int DeletedByNumber(int number)
         {
-            Console.WriteLine("Введите номер который хотите удалить:");
-            int number = int.Parse(Console.ReadLine());
+            int count = 0;
             for (int i = 0; i < list.Count; i++)
             {
                 if (list[i].Number == number)
                 {
                     list.RemoveAt(i);
+                    Save();
+                    count++;  
                 }
-                else { Console.WriteLine("Значение не найдено, либо введено не верное число!"); }
+               
             }
-            Save();
+            if (count > 0)
+            { 
+                Save(); 
+            }
+            return count;
         }
-        private void DeletedByName()
+        public int DeletedByName(string name)
         {
-            Console.WriteLine("Введите имя которое хотите удалить:");
-            string name = Console.ReadLine();
+            int count = 0;
             for (int i = 0; i < list.Count; i++)
             {
                 if (list[i].Name == name)
                 {
                     list.RemoveAt(i);
+                    Save();
+                    count++;
                 }
-                else { Console.WriteLine("Значение не найдено, либо введено не верное число!"); }
             }
-            Save();
+            if (count > 0)
+            {
+                Save();
+            }
+            return count;
         }
-        private void DeletedByFirstName()
+        public int DeletedByFirstName(string firstName)
         {
-            Console.WriteLine("Введите Фамилию которую хотите удалить:");
-            string firstName = Console.ReadLine();
+            int count = 0;
             for (int i = 0; i < list.Count; i++)
             {
                 if (list[i].FirstName == firstName)
                 {
                     list.RemoveAt(i);
+                    Save();
+                    count++;
                 }
-                else { Console.WriteLine("Значение не найдено, либо введено не верное число!"); }
             }
-            Save();
+            if (count > 0)
+            {
+                Save();
+            }
+            return count;
         }
-        private void DeletedByDateTime()
+    
+        public void DeletedByDateTime()
         {
             Console.WriteLine("Введите дату которую хотите удалить:");
             DateTime date =DateTime.Parse(Console.ReadLine());
@@ -182,20 +163,7 @@ namespace work7
             }
             Save();
         }
-        public void AddTask()
-        {
-            Console.WriteLine("Введите номер в котором хотите отредактировать запись:");
-            int number = int.Parse(Console.ReadLine());
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].Number == number)
-                {
-                    list[i].AddTask(Console.ReadLine());
-                }
-                else { Console.WriteLine("Значение не найдено, либо введено не верное число!"); }
-            }
-            Save();
-        }
+        
         public void SortMenu()
         {
             bool choice = true;
