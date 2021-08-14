@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace work7
+namespace Work7
 {
     class TaskBook
     {
@@ -20,13 +20,9 @@ namespace work7
         public string Task
         { get; set; }
         
-        public void AddTask(string AddTask)
+        public void Print(IPrinter printer)
         {
-            Task += AddTask;
-        }
-        public void Print()
-        {
-            Console.WriteLine(Number + "\n" + Name+"\n"+FirstName + "\n" + Task + "\n" + Date);
+            printer.Print(Number + "\n" + Name+"\n"+FirstName + "\n" + Task + "\n" + Date);
         }
         public string Name
         { get; set; }
