@@ -46,6 +46,9 @@ namespace Work7
                 }
             }
         }
+        /// <summary>
+        /// Создание новой записи.
+        /// </summary>
         public void AddNewTask()
         {
             Console.WriteLine("ВВеди имя:");
@@ -57,6 +60,9 @@ namespace Work7
             string date = DateTime.Now.ToString();
             task.AddTaskManegment(name, firstName, newTask, date);
         }
+        /// <summary>
+        /// меня по удалениям записей
+        /// </summary>
         static void DeletedMenu()
         {
             bool choice = true;
@@ -87,6 +93,9 @@ namespace Work7
                 }
             }
         }
+        /// <summary>
+        /// удаление по номеру
+        /// </summary>
         static void DeletedNumber()
         {
             Console.WriteLine("Введите номер который хотите удалить:");
@@ -100,6 +109,9 @@ namespace Work7
                 Console.WriteLine("Значение не найдено, либо введено не верное число!");
             }
         }
+        /// <summary>
+        /// удаление по имени
+        /// </summary>
         static void DeletedName()
         {
             Console.WriteLine("Введите имя которое хотите удалить:");
@@ -113,6 +125,9 @@ namespace Work7
                 Console.WriteLine("Значение не найдено, либо введено не верное число!");
             }
         }
+        /// <summary>
+        /// Выгрузка по интервалу
+        /// </summary>
         static void DataInterval()
         {
             Console.WriteLine("Введиет дату начала выгрузки:");
@@ -123,6 +138,9 @@ namespace Work7
             task.Load(datainterval);
             task.Print();
         }
+        /// <summary>
+        /// Удаление по фамилии
+        /// </summary>
         static void DeletedFirstName()
         {
             Console.WriteLine("Введите Фамилию которую хотите удалить:");

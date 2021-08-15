@@ -9,6 +9,9 @@ namespace Work7
 {
     class TaskManegment
     {
+        /// <summary>
+        /// Класс записи в список
+        /// </summary>
         static List<TaskBook> list = new List<TaskBook>();
         const string writePath = @"Class.txt";
         int number = 1;
@@ -24,6 +27,14 @@ namespace Work7
                 File.Create(@"Class.txt");
             }
         }
+        /// <summary>
+        /// Создание записи по входным данным
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="firstName"></param>
+        /// <param name="task"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public TaskBook AddTaskManegment(string name, string firstName, string task, string date)
         {
             TaskBook book = new TaskBook(number, name, firstName, task, date);
@@ -32,6 +43,10 @@ namespace Work7
             number++;
             return book;
         }
+        /// <summary>
+        /// Выгрузка из файла
+        /// </summary>
+        /// <param name="dateInterval"></param>
         public void Load(DateInterval dateInterval=null)
         {
             try
@@ -62,6 +77,9 @@ namespace Work7
             }
 
         }
+        /// <summary>
+        /// Печать всех записей
+        /// </summary>
         public void Print()
         {
             foreach (TaskBook task in list)
@@ -70,7 +88,9 @@ namespace Work7
                 Console.WriteLine();
             }
         }
-
+        /// <summary>
+        /// сохранение в файл
+        /// </summary>
         static void Save()
         {
             try
@@ -91,8 +111,11 @@ namespace Work7
             }
             Console.ReadKey();
         }
-
-
+        /// <summary>
+        /// удаление по номеру
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public int DeletedByNumber(int number)
         {
             int count = 0;
@@ -112,6 +135,11 @@ namespace Work7
             }
             return count;
         }
+        /// <summary>
+        /// удаление по имени
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public int DeletedByName(string name)
         {
             int count = 0;
@@ -130,6 +158,11 @@ namespace Work7
             }
             return count;
         }
+        /// <summary>
+        /// удаление по фамилии
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <returns></returns>
         public int DeletedByFirstName(string firstName)
         {
             int count = 0;
@@ -148,7 +181,9 @@ namespace Work7
             }
             return count;
         }
-    
+    /// <summary>
+    /// удаление по дате
+    /// </summary>
         public void DeletedByDateTime()
         {
             Console.WriteLine("Введите дату которую хотите удалить:");
@@ -163,7 +198,9 @@ namespace Work7
             }
             Save();
         }
-        
+        /// <summary>
+        /// Меню сортировки
+        /// </summary>
         public void SortMenu()
         {
             bool choice = true;
@@ -194,22 +231,33 @@ namespace Work7
                 }
             }
         }
-
+        /// <summary>
+        /// сортировка по номеру
+        /// </summary>
         public void SortByNumber()
         {
             list.Sort((a, b) => a.Number.CompareTo(b.Number));
             Print();
         }
+        /// <summary>
+        /// Сортировка по имени
+        /// </summary>
         public void SortByName()
         {
             list.Sort((a, b) => a.Name.CompareTo(b.Name));
             Print();
         }
+        /// <summary>
+        /// сортировка по фамилии
+        /// </summary>
         public void SortByFirstName()
         {
             list.Sort((a, b) => a.FirstName.CompareTo(b.FirstName));
             Print();
         }
+        /// <summary>
+        /// сортировка по дате
+        /// </summary>
         public void SortByDate()
         {
             list.Sort((a, b) => a.Date.CompareTo(b.Date));

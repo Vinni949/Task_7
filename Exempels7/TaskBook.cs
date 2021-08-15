@@ -7,7 +7,14 @@ using System.Threading.Tasks;
 namespace Work7
 {
     class TaskBook
-    {
+    {/// <summary>
+    /// клас создания обьектов для записи
+    /// </summary>
+    /// <param name="number"></param>
+    /// <param name="name"></param>
+    /// <param name="firstName"></param>
+    /// <param name="task"></param>
+    /// <param name="data"></param>
         public TaskBook(int number, string name, string firstName, string task, string data)
         {
             this.Number = number;
