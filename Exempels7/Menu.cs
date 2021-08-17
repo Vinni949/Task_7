@@ -59,6 +59,7 @@ namespace Work7
             string newTask = Console.ReadLine();
             string date = DateTime.Now.ToString();
             task.AddTaskManegment(name, firstName, newTask, date);
+            Console.WriteLine(task.Save());
         }
         /// <summary>
         /// меня по удалениям записей
@@ -102,6 +103,7 @@ namespace Work7
             int number = int.Parse(Console.ReadLine());
             if (task.DeletedByNumber(number) > 0)
             {
+                task.Save();
                 Console.WriteLine("Запись удалена!");
             }
             else
@@ -118,6 +120,7 @@ namespace Work7
             string name = Console.ReadLine();
             if (task.DeletedByName(name) > 0)
             {
+                task.Save();
                 Console.WriteLine("Запись удалена!");
             }
             else
@@ -147,6 +150,7 @@ namespace Work7
             string firstName = Console.ReadLine();
             if (task.DeletedByName(firstName) > 0)
             {
+                task.Save();
                 Console.WriteLine("Запись удалена!");
             }
             else

@@ -39,7 +39,6 @@ namespace Work7
         {
             TaskBook book = new TaskBook(number, name, firstName, task, date);
             list.Add(book);
-            Save();
             number++;
             return book;
         }
@@ -91,8 +90,9 @@ namespace Work7
         /// <summary>
         /// сохранение в файл
         /// </summary>
-        static void Save()
+        public string Save()
         {
+            string messege;
             try
             {
                 using (StreamWriter sw = new StreamWriter(writePath))
@@ -103,13 +103,12 @@ namespace Work7
                         sw.WriteLine(entry);
                     }
                 }
-                Console.WriteLine("Запись выполнена");
+                return messege="Запись выполнена";
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                return messege = e.Message;
             }
-            Console.ReadKey();
         }
         /// <summary>
         /// удаление по номеру
@@ -124,14 +123,8 @@ namespace Work7
                 if (list[i].Number == number)
                 {
                     list.RemoveAt(i);
-                    Save();
-                    count++;  
+                    count++;
                 }
-               
-            }
-            if (count > 0)
-            { 
-                Save(); 
             }
             return count;
         }
@@ -148,13 +141,8 @@ namespace Work7
                 if (list[i].Name == name)
                 {
                     list.RemoveAt(i);
-                    Save();
                     count++;
                 }
-            }
-            if (count > 0)
-            {
-                Save();
             }
             return count;
         }
@@ -171,13 +159,8 @@ namespace Work7
                 if (list[i].FirstName == firstName)
                 {
                     list.RemoveAt(i);
-                    Save();
                     count++;
                 }
-            }
-            if (count > 0)
-            {
-                Save();
             }
             return count;
         }
