@@ -65,6 +65,7 @@ namespace Work7
                         if (dateInterval == null||dateInterval.StartDate<=book.Date&&dateInterval.EndDate>= book.Date)
                         { 
                             list.Add(book);
+                            number++;
                         }
                     }
                 }
@@ -79,13 +80,14 @@ namespace Work7
         /// <summary>
         /// Печать всех записей
         /// </summary>
-        public void Print()
+        public string Print()
         {
+            string text = string.Empty;
             foreach (TaskBook task in list)
             {
-                task.Print(new ConsolePrinter());
-                Console.WriteLine();
+                text+=task.Print()+"\n";
             }
+            return text;
         }
         /// <summary>
         /// сохранение в файл

@@ -27,9 +27,9 @@ namespace Work7
         public string Task
         { get; set; }
         
-        public void Print(IPrinter printer)
+        public string Print()
         {
-            printer.Print("Запись: "+Number + "\n" + "Имя: "+Name+"\n"+"Фамилия: "+FirstName + "\n" + "Задача: "+Task + "\n" + "Дата создания: "+Date);
+            return $"\n{this.Number}\n{this.Name}\n{this.FirstName}\n{this.Task}\n{this.Date}\n";
         }
         public string Name
         { get; set; }

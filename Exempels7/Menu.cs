@@ -23,7 +23,7 @@ namespace Work7
                 switch (Console.ReadKey().Key)
                 {
                     case ConsoleKey.D1:
-                        task.Print();
+                        Console.WriteLine(task.Print());
                         break;
                     case ConsoleKey.D2:
                         AddNewTask();
